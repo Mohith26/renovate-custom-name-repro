@@ -1,0 +1,22 @@
+{
+  "customManagers": [
+    {
+      "customType": "regex",
+      "customName": "versions",
+      "managerFilePatterns": ["/^versions\\.txt$/"],
+      "matchStrings": ["npm:(?<depName>[a-z]+)@(?<currentValue>\\S+)"],
+      "datasourceTemplate": "npm"
+    },
+    {
+      "customType": "regex",
+      "customName": "tools",
+      "managerFilePatterns": ["/^tools\\.txt$/"],
+      "matchStrings": ["tool:(?<depName>[a-z]+)@(?<currentValue>\\S+)"],
+      "datasourceTemplate": "npm"
+    }
+  ],
+  "packageRules": [
+    { "matchManagers": ["custom.regex.tools"], "enabled": false },
+    { "matchManagers": ["custom.regex"], "addLabels": ["regex-any"] }
+  ]
+}
